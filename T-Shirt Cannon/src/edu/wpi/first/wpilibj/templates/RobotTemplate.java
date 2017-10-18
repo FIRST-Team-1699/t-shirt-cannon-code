@@ -99,6 +99,10 @@ public class RobotTemplate extends IterativeRobot {
         debugControl();
         
         stateBasedControl();
+        
+        if(ls.getRawButton(7)){
+            resetBarrels();
+        }
     }
 
     private void stateBasedControl(){
@@ -121,5 +125,15 @@ public class RobotTemplate extends IterativeRobot {
         }else if(rs.getRawButton(5)){
             b7.fire();
         }
+    }
+    
+    private void resetBarrels(){
+        b1.setFired(false);
+        b2.setFired(false);
+        b3.setFired(false);
+        b4.setFired(false);
+        b5.setFired(false);
+        b6.setFired(false);
+        b7.setFired(false);
     }
 }
