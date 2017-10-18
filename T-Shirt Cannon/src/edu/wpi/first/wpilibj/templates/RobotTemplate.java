@@ -49,6 +49,9 @@ public class RobotTemplate extends IterativeRobot {
     //Barrel Array
     Barrel[] barrelList;
     
+    //State/Index Machine
+    StateMachine stateMachine;
+    
     public void robotInit() {
         //Drive motors
         portMaster = new Talon(Constants.t1Port);
@@ -104,6 +107,9 @@ public class RobotTemplate extends IterativeRobot {
         barrelList[4] = b5;
         barrelList[5] = b6;
         barrelList[6] = b7;
+        
+        //StateMachine
+        stateMachine = new StateMachine(6); //Need to make sure  is correct number
     }
 
     public void teleopPeriodic() {
@@ -123,7 +129,11 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     private void stateBasedControl(){
-        
+        if(rs.getTrigger()){
+            int currentState = stateMachine.getCurrentState();
+            barrelList[currentState].fire();
+            stateMachine.incrementState();
+        }
     }
     
     private void debugControl(){
