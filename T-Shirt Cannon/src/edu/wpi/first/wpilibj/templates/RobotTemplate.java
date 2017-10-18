@@ -52,6 +52,9 @@ public class RobotTemplate extends IterativeRobot {
     //State/Index Machine
     StateMachine stateMachine;
     
+    //Says if trigger is released
+    private boolean released = true;
+    
     public void robotInit() {
         //Drive motors
         portMaster = new Talon(Constants.t1Port);
@@ -130,13 +133,16 @@ public class RobotTemplate extends IterativeRobot {
 
     private void stateBasedControl(){
         //Fires next barrel when trigger is pressed
-        if(rs.getTrigger()){
+        if(rs.getTrigger() && released){
             int currentState = stateMachine.getCurrentState();
             Barrel currentBarrel = barrelList[currentState];
             if(!currentBarrel.isFired()){
                 stateMachine.incrementState();
             }
             stateMachine.incrementState();
+            released = false;
+        }else{
+            released = true;
         }
     }
     
