@@ -141,7 +141,8 @@ public class RobotTemplate extends IterativeRobot {
             }
             stateMachine.incrementState();
             released = false;
-        }else{
+        }
+        if(!rs.getTrigger()){
             released = true;
         }
     }
