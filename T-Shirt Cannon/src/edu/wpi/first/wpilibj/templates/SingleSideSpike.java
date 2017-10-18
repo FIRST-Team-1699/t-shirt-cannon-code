@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Relay;
 
 public class SingleSideSpike { 
     
+    //Instance Vars
     private int id;
     private Relay r;
     private Relay.Value v;
@@ -18,6 +19,7 @@ public class SingleSideSpike {
         }
     }
     
+    //Triggers solenoid
     public void trigger(){
         r.set(v);
         try {
@@ -28,6 +30,7 @@ public class SingleSideSpike {
         r.set(Relay.Value.kOff);
     }
     
+    //Returns ID
     public int getID(){
         return this.id;
     }

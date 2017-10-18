@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates;
 
 public class Barrel {
     
+    //Instance Vars
     private SingleSideSpike spike;
     private int id;
     private boolean fired;
@@ -12,11 +13,13 @@ public class Barrel {
         fired = false;
     }
     
+    //Fires barrel
     public void fire(){
         spike.trigger();
         fired = true;
     }
     
+    //Getters/Setters
     public void setFired(boolean fired){
         this.fired = fired;
     }

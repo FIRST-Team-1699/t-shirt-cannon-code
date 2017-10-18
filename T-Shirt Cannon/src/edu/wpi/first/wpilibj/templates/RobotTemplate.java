@@ -109,7 +109,7 @@ public class RobotTemplate extends IterativeRobot {
         barrelList[6] = b7;
         
         //StateMachine
-        stateMachine = new StateMachine(6); //Need to make sure  is correct number
+        stateMachine = new StateMachine(6);
     }
 
     public void teleopPeriodic() {
@@ -129,14 +129,19 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     private void stateBasedControl(){
+        //Fires next barrel when trigger is pressed
         if(rs.getTrigger()){
             int currentState = stateMachine.getCurrentState();
-            barrelList[currentState].fire();
+            Barrel currentBarrel = barrelList[currentState];
+            if(!currentBarrel.isFired()){
+                stateMachine.incrementState();
+            }
             stateMachine.incrementState();
         }
     }
     
     private void debugControl(){
+        //Fires barrel based on what button is pressed
         if(ls.getRawButton(2)){
             b1.fire();
         }else if(ls.getRawButton(3)){
@@ -154,6 +159,7 @@ public class RobotTemplate extends IterativeRobot {
         }
     }
     
+    //Resets the state of all barrels
     private void resetBarrels(){
         b1.setFired(false);
         b2.setFired(false);
@@ -162,5 +168,6 @@ public class RobotTemplate extends IterativeRobot {
         b5.setFired(false);
         b6.setFired(false);
         b7.setFired(false);
+        stateMachine.setCurrentState(0);
     }
 }
