@@ -107,12 +107,16 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
+        //Runs drive train
         d.tankDrive(ls, rs);
         
+        //Used for debuging/fires single barrel out of order
         debugControl();
         
+        //Fires barrels in sequence
         stateBasedControl();
         
+        //Resets barrel state
         if(ls.getRawButton(7)){
             resetBarrels();
         }
