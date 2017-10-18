@@ -46,6 +46,9 @@ public class RobotTemplate extends IterativeRobot {
     Barrel b6;
     Barrel b7;
     
+    //Barrel Array
+    Barrel[] barrelList;
+    
     public void robotInit() {
         //Drive motors
         portMaster = new Talon(Constants.t1Port);
@@ -91,6 +94,16 @@ public class RobotTemplate extends IterativeRobot {
         b5 = new Barrel(5, s5);
         b6 = new Barrel(6, s6);
         b7 = new Barrel(7, s7);
+        
+        //Barrel Array
+        barrelList = new Barrel[7];
+        barrelList[0] = b1;
+        barrelList[1] = b2;
+        barrelList[2] = b3;
+        barrelList[3] = b4;
+        barrelList[4] = b5;
+        barrelList[5] = b6;
+        barrelList[6] = b7;
     }
 
     public void teleopPeriodic() {
