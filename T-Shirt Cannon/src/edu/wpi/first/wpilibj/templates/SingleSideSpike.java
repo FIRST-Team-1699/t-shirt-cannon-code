@@ -1,13 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates;
 
-public class SingleSideSpike {
+import edu.wpi.first.wpilibj.Relay;
+
+public class SingleSideSpike { 
     
-    public SingleSideSpike(int id){
-        
+    private int id;
+    private Relay r;
+    private Relay.Value v;
+    
+    public SingleSideSpike(int id, Relay r){
+        this.id = id;
+        this.r = r;
+        if(id % 2 == 0){
+            v = Relay.Value.kForward;
+        }else{
+            v = Relay.Value.kReverse;
+        }
+    }
+    
+    public void trigger(){
+        r.set(v);
+        try {
+            Thread.sleep(Constants.sleepTime);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        r.set(Relay.Value.kOff);
+    }
+    
+    public int getID(){
+        return this.id;
     }
 }

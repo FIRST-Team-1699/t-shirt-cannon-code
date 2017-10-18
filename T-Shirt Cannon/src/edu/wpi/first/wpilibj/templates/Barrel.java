@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates;
 
-/**
- *
- * @author Team1699
- */
 public class Barrel {
     
+    private SingleSideSpike spike;
+    private int id;
+    
+    private class BarrelState{
+        public int state = 0;
+    }
+    
+    public Barrel(int id, SingleSideSpike spike){
+        this.id = id;
+        this.spike = spike;
+    }
 }
