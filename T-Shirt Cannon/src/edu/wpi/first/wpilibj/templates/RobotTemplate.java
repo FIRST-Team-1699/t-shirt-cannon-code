@@ -149,19 +149,19 @@ public class RobotTemplate extends IterativeRobot {
     
     private void debugControl(){
         //Fires barrel based on what button is pressed
-        if(ls.getRawButton(2)){
+        if(ls.getRawButton(Constants.lsB1Fire)){
             b1.fire();
-        }else if(ls.getRawButton(3)){
+        }else if(ls.getRawButton(Constants.lsB2Fire)){
             b2.fire();
-        }else if(ls.getRawButton(4)){
+        }else if(ls.getRawButton(Constants.lsB3Fire)){
             b3.fire();
-        }else if(ls.getRawButton(5)){
+        }else if(ls.getRawButton(Constants.lsB4Fire)){
             b4.fire();
-        }else if(rs.getRawButton(3)){
+        }else if(rs.getRawButton(Constants.rsB5Fire)){
             b5.fire();
-        }else if(rs.getRawButton(4)){
+        }else if(rs.getRawButton(Constants.rsB6Fire)){
             b6.fire();
-        }else if(rs.getRawButton(5)){
+        }else if(rs.getRawButton(Constants.rsB7Fire)){
             b7.fire();
         }
     }
