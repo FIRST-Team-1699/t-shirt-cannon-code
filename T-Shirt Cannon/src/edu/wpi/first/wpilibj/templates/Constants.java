@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 public class Constants {
     
     //Delays
-    public static final int sleepTime = 100; //In milisec
+    public static final int sleepTime = 500; //In milisec
     
     //Talons
     public static final int t1Port = 1;
@@ -22,11 +22,11 @@ public class Constants {
     public static final int r8Port = 8;
     
     //JoystickButtons
-    public static final int lsB1Fire = 2;
-    public static final int lsB2Fire = 3;
-    public static final int lsB3Fire = 4;
-    public static final int lsB4Fire = 5;
-    public static final int rsB5Fire = 3;
-    public static final int rsB6Fire = 4;
-    public static final int rsB7Fire = 5;
+    public static final int rsB1Fire = 7;
+    public static final int rsB2Fire = 8;
+    public static final int rsB3Fire = 9;
+    public static final int rsB4Fire = 10;
+    public static final int rsB5Fire = 11;
+    public static final int rsB6Fire = 12;
+    public static final int rsB7Fire = 2;
 }

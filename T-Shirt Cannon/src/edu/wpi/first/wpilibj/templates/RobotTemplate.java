@@ -64,6 +64,10 @@ public class RobotTemplate extends IterativeRobot {
         
         //Robot Drive
         d = new RobotDrive(portMaster, portSlave, starMaster, starSlave);
+        d.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        d.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        d.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        d.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         
         //Joysticks
         rs = new Joystick(Constants.rsPort);
@@ -117,7 +121,7 @@ public class RobotTemplate extends IterativeRobot {
 
     public void teleopPeriodic() {
         //Runs drive train
-        d.tankDrive(ls, rs);
+        d.arcadeDrive(rs);
         
         //Used for debuging/fires single barrel out of order
         debugControl();
@@ -126,14 +130,14 @@ public class RobotTemplate extends IterativeRobot {
         stateBasedControl();
         
         //Resets barrel state
-        if(ls.getRawButton(7)){
+        if(rs.getRawButton(3)){
             resetBarrels();
         }
     }
 
     private void stateBasedControl(){
         //Fires next barrel when trigger is pressed
-        if(rs.getTrigger() && released){
+        if(rs.getRawButton(1) && released){
             int currentState = stateMachine.getCurrentState();
             Barrel currentBarrel = barrelList[currentState];
             if(!currentBarrel.isFired()){
@@ -142,27 +146,75 @@ public class RobotTemplate extends IterativeRobot {
             stateMachine.incrementState();
             released = false;
         }
-        if(!rs.getTrigger()){
+        if(!rs.getRawButton(1)){
             released = true;
         }
     }
     
     private void debugControl(){
-        //Fires barrel based on what button is pressed
-        if(ls.getRawButton(Constants.lsB1Fire)){
-            b1.fire();
-        }else if(ls.getRawButton(Constants.lsB2Fire)){
-            b2.fire();
-        }else if(ls.getRawButton(Constants.lsB3Fire)){
-            b3.fire();
-        }else if(ls.getRawButton(Constants.lsB4Fire)){
-            b4.fire();
-        }else if(rs.getRawButton(Constants.rsB5Fire)){
-            b5.fire();
-        }else if(rs.getRawButton(Constants.rsB6Fire)){
-            b6.fire();
-        }else if(rs.getRawButton(Constants.rsB7Fire)){
-            b7.fire();
+        //Fires barrel based on what button is pressed       
+        if(rs.getRawButton(Constants.rsB1Fire)){
+            r5.set(Relay.Value.kReverse);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r5.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB2Fire)){
+            r5.set(Relay.Value.kForward);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r5.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB3Fire)){
+            r6.set(Relay.Value.kReverse);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r6.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB4Fire)){
+            r6.set(Relay.Value.kForward);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r6.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB5Fire)){
+            r7.set(Relay.Value.kReverse);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r7.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB6Fire)){
+            r7.set(Relay.Value.kForward);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r7.set(Relay.Value.kOff);
+        }
+        if(rs.getRawButton(Constants.rsB7Fire)){
+            r8.set(Relay.Value.kReverse);
+            try {
+                Thread.sleep(Constants.sleepTime);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            r8.set(Relay.Value.kOff);
         }
     }
     
