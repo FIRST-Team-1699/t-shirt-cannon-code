@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.wpi.first.wpilibj.templates;
 
 public class Constants {
@@ -25,4 +20,13 @@ public class Constants {
     public static final int r6Port = 6;
     public static final int r7Port = 7;
     public static final int r8Port = 8;
+    
+    //JoystickButtons
+    public static final int lsB1Fire = 2;
+    public static final int lsB2Fire = 3;
+    public static final int lsB3Fire = 4;
+    public static final int lsB4Fire = 5;
+    public static final int rsB5Fire = 3;
+    public static final int rsB6Fire = 4;
+    public static final int rsB7Fire = 5;
 }
