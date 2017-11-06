@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.Talon;
 
 public class RobotTemplate extends IterativeRobot {
     
+    //Name vars better
+    
     //Drive motors
     Talon portMaster;
     Talon portSlave;
