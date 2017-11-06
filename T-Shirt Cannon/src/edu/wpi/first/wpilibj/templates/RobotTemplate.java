@@ -135,6 +135,7 @@ public class RobotTemplate extends IterativeRobot {
         }
     }
 
+    //Change to use queue instead of whatever this is
     private void stateBasedControl(){
         //Fires next barrel when trigger is pressed
         if(rs.getRawButton(1) && released){
@@ -151,6 +152,7 @@ public class RobotTemplate extends IterativeRobot {
         }
     }
     
+    //Change to use single sided solenoid
     private void debugControl(){
         //Fires barrel based on what button is pressed       
         if(rs.getRawButton(Constants.rsB1Fire)){
