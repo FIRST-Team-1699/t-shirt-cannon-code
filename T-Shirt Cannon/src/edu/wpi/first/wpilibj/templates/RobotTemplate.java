@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 
-public class RobotTemplate extends IterativeRobot {
-    
-    //Name vars better
-    
+public class RobotTemplate extends IterativeRobot {    
     //Drive motors
     Talon portMaster;
     Talon portSlave;
@@ -55,10 +52,10 @@ public class RobotTemplate extends IterativeRobot {
     
     public void robotInit() {
         //Drive motors
-        portMaster = new Talon(Constants.t1Port);
-        portSlave = new Talon(Constants.t2Port);
-        starMaster = new Talon(Constants.t3Port);
-        starSlave = new Talon(Constants.t4Port);
+        portMaster = new Talon(Constants.talon1Port);
+        portSlave = new Talon(Constants.talon2Port);
+        starMaster = new Talon(Constants.talon3Port);
+        starSlave = new Talon(Constants.talon4Port);
         
         //Robot Drive
         driveTrain = new RobotDrive(portMaster, portSlave, starMaster, starSlave);
@@ -68,7 +65,7 @@ public class RobotTemplate extends IterativeRobot {
         driveTrain.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         
         //Joysticks
-        rightStick = new Joystick(Constants.rsPort);
+        rightStick = new Joystick(Constants.rightStickPort);
         
         //Spikes
         /*
@@ -78,10 +75,10 @@ public class RobotTemplate extends IterativeRobot {
         *KOn - Sets both relay outputs on (M+ @ 12V, M- @ 12V).
         */
         //Change to SingleSidedSpikes
-        relay5 = new Relay(Constants.r5Port);
-        relay6 = new Relay(Constants.r6Port);
-        relay7 = new Relay(Constants.r7Port);
-        relay8 = new Relay(Constants.r8Port);
+        relay5 = new Relay(Constants.relay5Port);
+        relay6 = new Relay(Constants.relay6Port);
+        relay7 = new Relay(Constants.relay7Port);
+        relay8 = new Relay(Constants.relay8Port);
         
         //Even numbered barrels use kForward, Odd numbers use kReverse
         //SingleSideSpikes
@@ -146,7 +143,7 @@ public class RobotTemplate extends IterativeRobot {
     //Change to use single sided solenoid
     private void debugControl(){
         //Fires barrel based on what button is pressed       
-        if(rightStick.getRawButton(Constants.rsB1Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel1Fire)){
             relay5.set(Relay.Value.kReverse);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -155,7 +152,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay5.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB2Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel2Fire)){
             relay5.set(Relay.Value.kForward);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -164,7 +161,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay5.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB3Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel3Fire)){
             relay6.set(Relay.Value.kReverse);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -173,7 +170,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay6.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB4Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel4Fire)){
             relay6.set(Relay.Value.kForward);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -182,7 +179,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay6.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB5Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel5Fire)){
             relay7.set(Relay.Value.kReverse);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -191,7 +188,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay7.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB6Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel6Fire)){
             relay7.set(Relay.Value.kForward);
             try {
                 Thread.sleep(Constants.sleepTime);
@@ -200,7 +197,7 @@ public class RobotTemplate extends IterativeRobot {
             }
             relay7.set(Relay.Value.kOff);
         }
-        if(rightStick.getRawButton(Constants.rsB7Fire)){
+        if(rightStick.getRawButton(Constants.righStickBarrel7Fire)){
             relay8.set(Relay.Value.kReverse);
             try {
                 Thread.sleep(Constants.sleepTime);

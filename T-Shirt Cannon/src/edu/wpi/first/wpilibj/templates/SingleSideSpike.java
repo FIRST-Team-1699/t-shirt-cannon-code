@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.Relay;
 
 public class SingleSideSpike { 
     
+    //Used to activate one side of the spike since we use one spike to fire two solenoids
+    
     //Instance Vars
     private int id;
     private Relay r;

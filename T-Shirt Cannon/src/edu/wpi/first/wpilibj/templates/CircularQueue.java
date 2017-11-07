@@ -6,13 +6,13 @@ import java.util.Vector;
 
 public class CircularQueue {
 
-    Vector queue = new Vector();
+    Vector queue = new Vector(); //Like an ArrayList
 
-    public void addData(Object data){
+    public void addData(Object data){ //Adds data to array
         queue.addElement(data);
     }
 
-    public Object get(){
+    public Object get(){ //Returns data on bottom and puts that piece of data on the top
         Object result;
         result = queue.elementAt(0);
         queue.removeElementAt(0);
@@ -20,7 +20,7 @@ public class CircularQueue {
         return result;
     }
 
-    public int getSize(){
+    public int getSize(){ //Returns size of array
         return queue.size();
     }
 }

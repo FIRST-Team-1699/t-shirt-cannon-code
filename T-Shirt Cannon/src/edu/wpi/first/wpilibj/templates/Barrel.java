@@ -24,6 +24,7 @@ public class Barrel {
         this.fired = fired;
     }
     
+    //Returns if the barrel has been fired
     public boolean isFired(){
         return fired;
     }
