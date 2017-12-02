@@ -28,4 +28,8 @@ public class Barrel {
     public boolean isFired(){
         return fired;
     }
+    
+    public int getId(){
+        return id;
+    }
 }
