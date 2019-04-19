@@ -1,6 +1,6 @@
 package com.frc1699.utils;
 
-import com.frc1699.Constants.Constants;
+import com.frc1699.constants.Constants;
 import edu.wpi.first.wpilibj.Relay;
 
 public class SingleSideSpike { 

@@ -1,4 +1,4 @@
-package com.frc1699.Constants;
+package com.frc1699.constants;
 
 public class Constants {
     

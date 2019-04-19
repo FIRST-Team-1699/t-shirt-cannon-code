@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.frc1699.utils;
 
-/**
- *
- * @author Jakob Misbach
- */
+import java.util.Vector;
+
 public class Queue {
     
+    private final Vector queue;
+    
+    public Queue(){
+        queue = new Vector();
+    }
+    
+    public synchronized void add(Object e){
+        queue.addElement(e);
+    }
+    
+    //Removes object
+    public synchronized Object poll(){
+        Object returnElement = queue.elementAt(0);
+        queue.removeElementAt(0);
+        return returnElement;
+    }
+    
+    //Does not remove object
+    public synchronized Object peek(){
+        return queue.elementAt(0);
+    }
 }
