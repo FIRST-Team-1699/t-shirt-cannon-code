@@ -1,13 +1,19 @@
-package edu.wpi.first.wpilibj.templates;
+package com.team1699;
 
 
+
+
+import com.frc1699.utils.SingleSideSpike;
+import com.frc1699.Constants.Constants;
+import com.frc1699.utils.CircularQueue;
+import com.frc1699.Barrel.Barrel;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 
-public class RobotTemplate extends IterativeRobot {    
+public class Robot extends IterativeRobot {    
     //Drive motors
     Talon portMaster;
     Talon portSlave;
