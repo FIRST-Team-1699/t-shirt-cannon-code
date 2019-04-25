@@ -8,3 +8,10 @@ hs_err_pid*
 
 /bin/
 /doc/
+test-dashboard-client/test-dashboard-client.iml
+.idea/*
+test-dashboard-client/.idea/*
+test-dashboard-client/.idea/libraries/docs.xml
+test-dashboard-client/.idea/libraries/lib.xml
+test-dashboard-client/.idea/libraries/lib1.xml
+test-dashboard-client/.idea/vcs.xml

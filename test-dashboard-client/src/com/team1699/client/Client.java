@@ -1,41 +1,42 @@
-package com.frc1699.client;
+package com.team1699.client;
 
-import com.frc1699.utils.Queue;
+import com.team1699.utils.Queue;
+
+import javax.microedition.io.Connector;
+import javax.microedition.io.StreamConnection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import javax.microedition.io.Connector;
-import javax.microedition.io.StreamConnection;
 
 public class Client  implements Runnable{
-    
-    private Client instance;
-    
-    public Client getInstance(){
+
+    private static Client instance;
+
+    public static Client getInstance(){
         if(instance == null){
             instance = new Client();
         }
         return instance;
     }
-    
+
     private StreamConnection socket;
     private InputStream in;
     private OutputStream out;
-    
+
     private final Queue writeQueue;
-    
+
     private final String host = "localhost";
     private final int port = 12345;
-    
+
     private Thread thread;
     private boolean running = false;
-    
+
     private Client(){
         writeQueue = new Queue();
-        
+
         try{
             socket = (StreamConnection) Connector.open("socket://" + host + ":" + port, Connector.READ_WRITE);
-            
+
             String request = "GET / HTTP/1.0\n\n";
 
             out = socket.openOutputStream();
@@ -54,7 +55,7 @@ public class Client  implements Runnable{
                 }
                 total += count;
             }
-            String reply = new String(buf, 0, total);;
+            String reply = new String(buf, 0, total);
         } catch(IOException e) {
             e.printStackTrace();
         } finally {
@@ -82,7 +83,7 @@ public class Client  implements Runnable{
             }
         }
     }
-    
+
     public void run(){
         while(running){
             synchronized(writeQueue){
@@ -98,8 +99,8 @@ public class Client  implements Runnable{
                 }
             }
         }
-    }   
-    
+    }
+
     public synchronized void start(){
         if(running)return;
         running = true;
