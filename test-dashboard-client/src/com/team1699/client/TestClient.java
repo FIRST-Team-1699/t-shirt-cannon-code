@@ -56,7 +56,7 @@ public class TestClient implements Runnable{
             if(!writeQueue.isEmpty()){
                 Message msg = writeQueue.poll();
                 byte[] writeMsg;
-                writeMsg = Base64.getDecoder().decode(msg.getMessage());
+                writeMsg = msg.getMessage().getBytes();
                 try {
                     out.write(writeMsg);
                     byte[] readMsg = new byte[128];
