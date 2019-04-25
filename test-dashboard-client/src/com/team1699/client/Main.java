@@ -6,7 +6,7 @@ public class Main {
 
     public static void main(String[] args){
         TestClient.getInstance();
-        Message msg = new Message("Hello Server");
+        Message msg = new Message("3 1");
         TestClient.getInstance().addMsg(msg);
         System.out.println(msg.getResponse());
     }
