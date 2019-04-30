@@ -2,7 +2,9 @@ package com.team1699.client;
 
 import com.team1699.utils.Message;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 import java.util.Base64;
 import java.util.PriorityQueue;
@@ -61,7 +63,7 @@ public class TestClient implements Runnable{
                     out.write(writeMsg);
                     byte[] readMsg = new byte[128];
                     int inLength = in.read(readMsg);
-                    msg.setResponse(Base64.getEncoder().encodeToString(readMsg));
+                    msg.setResponse(Base64.getEncoder().encodeToString(readMsg)); //TODO Fix?
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
