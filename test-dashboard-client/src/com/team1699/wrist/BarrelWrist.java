@@ -56,10 +56,10 @@ public class BarrelWrist implements WristLoop {
 
         final double maxVoltage = state == State.RUNNING ? kMaxVoltage : kMaxZeroingVoltage;
 
-        if(voltage >= kMaxVoltage){
-            return 12.0;
-        }else if(voltage <= -kMaxVoltage){
-            return -12.0;
+        if(voltage >= maxVoltage){
+            return maxVoltage;
+        }else if(voltage <= -maxVoltage){
+            return -maxVoltage;
         }else{
             return voltage;
         }

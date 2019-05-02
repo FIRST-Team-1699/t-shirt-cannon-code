@@ -32,6 +32,7 @@ public class WristSimTest {
             pw.write(String.format("%f, %f, %f, %f, %f, %f, %f\n", currentTime, simWrist.position, voltage, simWrist.velocity, simWrist.getAcceleration(voltage), simWrist.limitTriggered() ? 1.0 : 0.0, BarrelWrist.getInstance().lastError));
             simulateTime(voltage, BarrelWristSim.kDt);
             currentTime += BarrelWristSim.kDt;
+            pw.flush();
         }
 
         pw.close();
@@ -50,7 +51,8 @@ public class WristSimTest {
             simWrist.velocity += acceleration * kSimTime;
             currentTime += kSimTime;
             if(simWrist.limitTriggered()){
-                assertTrue(simWrist.velocity > 0.0);
+                System.out.println(simWrist.velocity);
+                assertTrue(simWrist.velocity > -0.05);
             }
             assertTrue(simWrist.position >= WristLoop.kMinHeight - 0.01);
             assertTrue(simWrist.position <= WristLoop.kMaxHeight + 0.01);
