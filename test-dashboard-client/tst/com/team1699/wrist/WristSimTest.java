@@ -15,7 +15,7 @@ public class WristSimTest {
 
     @Test
     void testWristModel(){
-        WristLoop wrist = new BarrelWrist();
+        BarrelWrist wrist = new BarrelWrist();
         wrist.setGoal(0.5);
 
         PrintWriter pw = null;
@@ -24,12 +24,12 @@ public class WristSimTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        pw.write("# time, position, voltage, velocity, acceleration, limitSensor, lastError\n");
+        pw.write("# time, position, voltage, velocity, acceleration, goal, limitSensor, lastError\n");
 
         double currentTime = 0.0;
         while(currentTime < 100.0) {
             final double voltage = wrist.update(simWrist.encoder(), simWrist.limitTriggered(), true);
-            pw.write(String.format("%f, %f, %f, %f, %f, %f, %f\n", currentTime, simWrist.position, voltage, simWrist.velocity, simWrist.getAcceleration(voltage), simWrist.limitTriggered() ? 1.0 : 0.0, BarrelWrist.getInstance().lastError));
+            pw.write(String.format("%f, %f, %f, %f, %f, %f, %f, %f\n", currentTime, simWrist.position, voltage, simWrist.velocity, simWrist.getAcceleration(voltage), wrist.getFilteredGoal(), simWrist.limitTriggered() ? 1.0 : 0.0, wrist.lastError));
             simulateTime(voltage, BarrelWristSim.kDt);
             currentTime += BarrelWristSim.kDt;
             pw.flush();

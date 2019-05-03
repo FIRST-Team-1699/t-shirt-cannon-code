@@ -2,15 +2,6 @@ package com.team1699.wrist;
 
 public class BarrelWrist implements WristLoop {
 
-    private static BarrelWrist instance;
-
-    public static BarrelWrist getInstance() {
-        if(instance == null){
-            instance = new BarrelWrist();
-        }
-        return instance;
-    }
-
     double goal_ = 0.0;
     private int state = State.UNINITIALIZED;
     double offset = 0.0;
@@ -20,7 +11,7 @@ public class BarrelWrist implements WristLoop {
     @Override
     public double update(double encoder, boolean limitTriggered, boolean enabled) {
 
-        double filteredGoal = goal_;
+        filteredGoal = goal_;
 
         double position = encoder + offset;
         switch (state){
@@ -68,11 +59,11 @@ public class BarrelWrist implements WristLoop {
     @Override
     public void setGoal(double goal) {
         if(goal > kMaxHeight) {
-            goal = kMaxHeight;
+            goal_ = kMaxHeight;
         }else if(goal < kMinHeight){
-            goal = kMinHeight;
+            goal_ = kMinHeight;
         }else{
-            this.goal_ = goal;
+            goal_ = goal;
         }
     }
 

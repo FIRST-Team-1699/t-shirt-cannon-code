@@ -16,7 +16,7 @@ public interface WristLoop {
     double kZeroingVelocity = 0.01;
 
     //Max Height
-    double kMaxHeight = 0.50;
+    double kMaxHeight = 1.0;
 
     //Min Height
     double kMinHeight = 0.0;
