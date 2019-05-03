@@ -11,8 +11,6 @@ public class BarrelWrist implements WristLoop {
     @Override
     public double update(double encoder, boolean limitTriggered, boolean enabled) {
 
-        filteredGoal = goal_;
-
         double position = encoder + offset;
         switch (state){
             case 0: //Uninitialized
@@ -43,8 +41,9 @@ public class BarrelWrist implements WristLoop {
         final double error = filteredGoal - position;
         final double vel = (error - lastError) / kDt;
         lastError = error;
-        System.out.println(String.format("G: %f E: %f P: %f", filteredGoal, error, position));
         double voltage = Kp * error + Kv * vel;
+
+        System.out.println(String.format("G: %f E: %f P: %f V: %f", filteredGoal, error, position, voltage));
 
         final double maxVoltage = state == State.RUNNING ? kMaxVoltage : kMaxZeroingVoltage;
 
