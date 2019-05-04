@@ -43,7 +43,7 @@ public class BarrelWrist implements WristLoop {
         lastError = error;
         double voltage = Kp * error + Kv * vel;
 
-        System.out.println(String.format("G: %f E: %f P: %f V: %f", filteredGoal, error, position, voltage));
+        //System.out.println(String.format("G: %f E: %f P: %f V: %f", filteredGoal, error, position, voltage));
 
         final double maxVoltage = state == State.RUNNING ? kMaxVoltage : kMaxZeroingVoltage;
 

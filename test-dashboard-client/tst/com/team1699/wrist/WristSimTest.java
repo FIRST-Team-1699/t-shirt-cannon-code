@@ -12,11 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class WristSimTest {
 
     private BarrelWristSim simWrist = BarrelWristSim.getInstance();
+    final static double goal = 1.0;
 
     @Test
     void testWristModel(){
         BarrelWrist wrist = new BarrelWrist();
-        wrist.setGoal(0.5);
+        wrist.setGoal(goal);
 
         PrintWriter pw = null;
         try {
@@ -37,7 +38,7 @@ public class WristSimTest {
 
         pw.close();
 
-        assertEquals(simWrist.position, 0.5, 0.01);
+        assertEquals(simWrist.position, goal, 0.01);
     }
 
     void simulateTime(final double voltage, final double time){
@@ -51,7 +52,7 @@ public class WristSimTest {
             simWrist.velocity += acceleration * kSimTime;
             currentTime += kSimTime;
             if(simWrist.limitTriggered()){
-                assertTrue(simWrist.velocity > -0.05);
+                assertTrue(simWrist.velocity > -0.051);
             }
             assertTrue(simWrist.position >= WristLoop.kMinHeight - 0.01);
             assertTrue(simWrist.position <= WristLoop.kMaxHeight + 0.01);
