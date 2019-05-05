@@ -14,37 +14,34 @@ public class BarrelWristSim {
         return instance;
     }
 
-    //Distance from center of rotation in meters
-    static final double cg = 0.0;
     //Mass of Barrel Assembly in Kilograms
-    //static final double kMass = 13.6078; //TODO Change to actual mass
-    static final double kMass = 20.0;
+    static final double kMass = 17.19;
     //Gear Ratio
-    static final double kG = 100.0 * 60/12; //TODO Check
-    //Radius of pulley
-    static final double kr = 0.25 * 0.0254 * 22.0 / Math.PI / 2.0; //TODO Check if needed
+    static final double kG = 100.0 * 60/12;
+    //Distance to Center of Gravity
+    static final double kD = .381;
 
     //Sample time
-    public static final double kDt = 0.010;
+    static final double kDt = 0.010;
 
     // V = I * R + ω / Kv
     // torque = Kt * I
 
     BarrelWristSim(){}
 
-    double position = 0.1;
-    double velocity = 0.0;
-    double offset = 0.1;
+    double angle = 5;
+    double aVelocity = 0.0; //Angular Velocity
+    double offset = 5;
 
     double getAcceleration(final double voltage){
-        return -Kt * kG * kG / (Kv * kResistance * kr * kr * kMass) * velocity + kG * Kt / (kResistance * kr * kMass) * voltage;
+        return (voltage - (aVelocity / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle)));
     }
 
     boolean limitTriggered(){
-        return position > -0.04 && position < 0.0;
+        return angle > -0.04 && angle < 0.0;
     }
 
     double encoder(){
-        return position + offset;
+        return angle + offset;
     }
 }
