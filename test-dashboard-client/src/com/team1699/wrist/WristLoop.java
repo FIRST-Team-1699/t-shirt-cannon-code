@@ -13,7 +13,7 @@ public interface WristLoop {
     double kDt = 0.05;
 
     //Zeroing angular velocity
-    double kZeroingAVelocity = 5.0;
+    double kZeroingAVelocity = 0.01;
 
     //Max Height
     double kMaxAngle = 70.0;

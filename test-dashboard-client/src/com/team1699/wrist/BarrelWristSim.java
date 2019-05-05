@@ -19,7 +19,7 @@ public class BarrelWristSim {
     //Gear Ratio
     static final double kG = 100.0 * 60/12;
     //Distance to Center of Gravity
-    static final double kD = .381;
+    static final double kr = 7.165/2;
 
     //Sample time
     static final double kDt = 0.010;
@@ -30,11 +30,11 @@ public class BarrelWristSim {
     private BarrelWristSim(){}
 
     double angle = 5;
-    double aVelocity = 0.0; //Angular Velocity
+    double velocity = 0.0; //Angular Velocity
     double offset = 5;
 
     double getAcceleration(final double voltage){
-        return (voltage - ((aVelocity * kG * 360) / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle) * kResistance));
+        return -Kt * kG * kG / (Kv * kResistance * kr * kr * kMass) * velocity + kG * Kt / (kResistance * kr * kMass) * voltage;
     }
 
     boolean limitTriggered(){
