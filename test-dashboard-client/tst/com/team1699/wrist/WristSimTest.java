@@ -38,7 +38,7 @@ public class WristSimTest {
 
         pw.close();
 
-        assertEquals(simWrist.angle, goal, 0.01);
+        assertEquals(goal, simWrist.angle, 0.01);
     }
 
     void simulateTime(final double voltage, final double time){

@@ -13,7 +13,7 @@ public interface WristLoop {
     double kDt = 0.05;
 
     //Zeroing angular velocity
-    double kZeroingAVelocity = 1;
+    double kZeroingAVelocity = 5.0;
 
     //Max Height
     double kMaxAngle = 70.0;
@@ -28,8 +28,8 @@ public interface WristLoop {
     double kMaxZeroingVoltage = 4.0;
 
     //Control loop constants
-    double Kp = 1.0;
-    double Kv = 1.0;
+    double Kp = 100.0;
+    double Kv = 5.0;
 
     //Returns voltage that needs to be applied to the wrist motor
     double update(double encoder, boolean limitTriggered, boolean enables);

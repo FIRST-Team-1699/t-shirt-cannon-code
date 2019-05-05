@@ -27,14 +27,14 @@ public class BarrelWristSim {
     // V = I * R + ω / Kv
     // torque = Kt * I
 
-    BarrelWristSim(){}
+    private BarrelWristSim(){}
 
     double angle = 5;
     double aVelocity = 0.0; //Angular Velocity
     double offset = 5;
 
     double getAcceleration(final double voltage){
-        return (voltage - ((aVelocity * kG) / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle) * kResistance));
+        return (voltage - ((aVelocity * kG * 360) / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle) * kResistance));
     }
 
     boolean limitTriggered(){
