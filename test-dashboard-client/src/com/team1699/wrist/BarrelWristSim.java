@@ -34,7 +34,7 @@ public class BarrelWristSim {
     double offset = 5;
 
     double getAcceleration(final double voltage){
-        return (voltage - (aVelocity / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle)));
+        return (voltage - ((aVelocity * kG) / Kv)) * ((kG * Kt)/(kMass * kD * Math.cos(90 - angle)));
     }
 
     boolean limitTriggered(){
