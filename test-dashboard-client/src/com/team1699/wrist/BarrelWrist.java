@@ -11,20 +11,20 @@ public class BarrelWrist implements WristLoop {
     @Override
     public double update(double encoder, boolean limitTriggered, boolean enabled) {
 
-        double angle = encoder + offset;
+        double position = encoder + offset;
         switch (state){
             case 0: //Uninitialized
                 if (enabled){
                     state = State.ZEROING;
-                    filteredGoal = angle;
+                    filteredGoal = position;
                 }
                 break;
             case 1: //Zeroing
-                filteredGoal -= kDt * kZeroingAVelocity;
+                filteredGoal -= kDt * kZeroingVelocity;
                 if (limitTriggered) {
                     state = State.RUNNING;
                     offset = -encoder;
-                    angle = 0.0;
+                    position = 0.0;
                 }
                 if (!enabled) {
                     state = State.UNINITIALIZED;
@@ -38,12 +38,12 @@ public class BarrelWrist implements WristLoop {
                 break;
         }
 
-        final double error = filteredGoal - angle;
+        final double error = filteredGoal - position;
         final double vel = (error - lastError) / kDt;
         lastError = error;
         double voltage = Kp * error + Kv * vel;
 
-        //System.out.println(String.format("G: %f E: %f P: %f V: %f", filteredGoal, error, angle, voltage));
+        //System.out.println(String.format("G: %f E: %f P: %f V: %f", filteredGoal, error, position, voltage));
 
         final double maxVoltage = state == State.RUNNING ? kMaxVoltage : kMaxZeroingVoltage;
 
@@ -58,10 +58,10 @@ public class BarrelWrist implements WristLoop {
 
     @Override
     public void setGoal(double goal) {
-        if(goal > kMaxAngle) {
-            goal_ = kMaxAngle;
-        }else if(goal < kMinAngle){
-            goal_ = kMinAngle;
+        if(goal > kMaxHeight) {
+            goal_ = kMaxHeight;
+        }else if(goal < kMinHeight){
+            goal_ = kMinHeight;
         }else{
             goal_ = goal;
         }

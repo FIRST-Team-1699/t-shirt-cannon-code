@@ -12,14 +12,14 @@ public interface WristLoop {
 
     double kDt = 0.05;
 
-    //Zeroing angular velocity
-    double kZeroingAVelocity = 0.01;
+    //Zeroing velocity in m/sec
+    double kZeroingVelocity = 0.01;
 
     //Max Height
-    double kMaxAngle = 70.0;
+    double kMaxHeight = 2.0;
 
     //Min Height
-    double kMinAngle = 0.0;
+    double kMinHeight = 0.0;
 
     //Max voltage to be applied
     double kMaxVoltage = 12.0;
@@ -27,13 +27,13 @@ public interface WristLoop {
     //Max voltage when zeroing
     double kMaxZeroingVoltage = 4.0;
 
-    //Control loop constants
-    double Kp = 100.0;
-    double Kv = 5.0;
+    //Control loop constants TODO Change
+    double Kp = 30.0;
+    double Kv = 70.0;
 
     //Returns voltage that needs to be applied to the wrist motor
     double update(double encoder, boolean limitTriggered, boolean enables);
 
-    //Sets the goal
+    //Sets the goal TODO Think more
     void setGoal(double goal);
 }
