@@ -1,5 +1,7 @@
 package com.team1699.wrist;
 
+import com.team1699.utils.MotorConstants;
+
 import static com.team1699.utils.MotorConstants.Motor775Pro.*;
 
 //Code inspiration from: https://www.youtube.com/watch?v=uGtT8ojgSzg
@@ -16,12 +18,12 @@ public class BarrelWristSim {
 
     //Distance from center of rotation in meters
     static final double cg = 0.0;
-    //Mass of Barrel Assembly in Kilograms
-    static final double kMass = 20.0;
+    //Rotational Inertia of Barrel Assembly in Kilograms * meters * meters
+    static final double kInertia = 0.04441392;
     //Gear Ratio
     static final double kG = 100.0 * 60/12;
     //Radius of pulley
-    static final double kr = 0.25 * 0.0254 * 22.0 / Math.PI / 2.0;
+    static final double kr = 3.5825;
 
     //Sample time
     public static final double kDt = 0.010;
@@ -36,7 +38,7 @@ public class BarrelWristSim {
     double offset = 0.1;
 
     double getAcceleration(final double voltage){
-        return -Kt * kG * kG / (Kv * kResistance * kr * kr * kMass) * velocity + kG * Kt / (kResistance * kr * kMass) * voltage;
+        return (voltage - (velocity / Kv)) * ((kG * Kt) / (kInertia * kResistance));
     }
 
     boolean limitTriggered(){
