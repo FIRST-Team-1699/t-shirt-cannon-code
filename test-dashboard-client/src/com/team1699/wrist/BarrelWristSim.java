@@ -17,12 +17,11 @@ public class BarrelWristSim {
     //Distance from center of rotation in meters
     static final double cg = 0.0;
     //Mass of Barrel Assembly in Kilograms
-    //static final double kMass = 13.6078; //TODO Change to actual mass
     static final double kMass = 20.0;
     //Gear Ratio
-    static final double kG = 100.0 * 60/12; //TODO Check
+    static final double kG = 100.0 * 60/12;
     //Radius of pulley
-    static final double kr = 0.25 * 0.0254 * 22.0 / Math.PI / 2.0; //TODO Check if needed
+    static final double kr = 0.25 * 0.0254 * 22.0 / Math.PI / 2.0;
 
     //Sample time
     public static final double kDt = 0.010;
