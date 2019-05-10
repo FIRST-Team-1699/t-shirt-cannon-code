@@ -20,7 +20,7 @@ public class BarrelWrist implements WristLoop {
                 }
                 break;
             case 1: //Zeroing
-                filteredGoal -= kDt * kZeroingVelocity;
+                filteredGoal -= kDt * kZeroingAVelocity;
                 if (limitTriggered) {
                     state = State.RUNNING;
                     offset = -encoder;
@@ -58,10 +58,10 @@ public class BarrelWrist implements WristLoop {
 
     @Override
     public void setGoal(double goal) {
-        if(goal > kMaxHeight) {
-            goal_ = kMaxHeight;
-        }else if(goal < kMinHeight){
-            goal_ = kMinHeight;
+        if(goal > kMaxAngle) {
+            goal_ = kMaxAngle;
+        }else if(goal < kMinAngle){
+            goal_ = kMinAngle;
         }else{
             goal_ = goal;
         }

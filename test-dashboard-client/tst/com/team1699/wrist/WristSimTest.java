@@ -25,12 +25,12 @@ public class WristSimTest {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        pw.write("# time, position, voltage, velocity, acceleration, goal, limitSensor, lastError\n");
+        pw.write("# time, angle, voltage, aVel, aAcceleration, goal, limitSensor, lastError\n");
 
         double currentTime = 0.0;
         while(currentTime < 30.0) {
             final double voltage = wrist.update(simWrist.encoder(), simWrist.limitTriggered(), true);
-            pw.write(String.format("%f, %f, %f, %f, %f, %f, %f, %f\n", currentTime, simWrist.position, voltage, simWrist.velocity, simWrist.getAcceleration(voltage), wrist.getFilteredGoal(), simWrist.limitTriggered() ? 1.0 : 0.0, wrist.lastError));
+            pw.write(String.format("%f, %f, %f, %f, %f, %f, %f, %f\n", currentTime, simWrist.angle, voltage, simWrist.aVel, simWrist.getAcceleration(voltage), wrist.getFilteredGoal(), simWrist.limitTriggered() ? 1.0 : 0.0, wrist.lastError));
             simulateTime(voltage, BarrelWristSim.kDt);
             currentTime += BarrelWristSim.kDt;
             pw.flush();
@@ -38,7 +38,7 @@ public class WristSimTest {
 
         pw.close();
 
-        assertEquals(simWrist.position, goal, 0.01);
+        assertEquals(simWrist.angle, goal, 0.01);
     }
 
     void simulateTime(final double voltage, final double time){
@@ -48,14 +48,14 @@ public class WristSimTest {
         double currentTime = 0.0;
         while(currentTime < time){
             final double acceleration = simWrist.getAcceleration(voltage);
-            simWrist.position += simWrist.velocity * kSimTime;
-            simWrist.velocity += acceleration * kSimTime;
+            simWrist.angle += simWrist.aVel * kSimTime;
+            simWrist.aVel += acceleration * kSimTime;
             currentTime += kSimTime;
             if(simWrist.limitTriggered()){
-                assertTrue(simWrist.velocity > -0.05, String.format("System running at %f m/s which is less than -0.051", simWrist.velocity));
+                assertTrue(simWrist.aVel > -10.0, String.format("System running at %f rpm which is less than -10.0", simWrist.aVel));
             }
-            assertTrue(simWrist.position >= WristLoop.kMinHeight - 0.01, String.format("System is at %f meters which is less than minimum height of %f", simWrist.position, WristLoop.kMinHeight));
-            assertTrue(simWrist.position <= WristLoop.kMaxHeight + 0.01, String.format("System is at %f meters which is greater than the maximum height of %f", simWrist.position, WristLoop.kMaxHeight));
+            assertTrue(simWrist.angle >= WristLoop.kMinAngle - 0.01, String.format("System is at %f meters which is less than minimum angle of %f", simWrist.angle, WristLoop.kMinAngle));
+            assertTrue(simWrist.angle <= WristLoop.kMaxAngle + 0.01, String.format("System is at %f meters which is greater than the maximum angle of %f", simWrist.angle, WristLoop.kMaxAngle));
         }
     }
 }

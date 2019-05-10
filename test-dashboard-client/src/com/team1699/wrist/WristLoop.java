@@ -12,14 +12,14 @@ public interface WristLoop {
 
     double kDt = 0.05;
 
-    //Zeroing velocity in m/sec
-    double kZeroingVelocity = 0.01;
+    //Zeroing velocity in rpm
+    double kZeroingAVelocity = 10.0;
 
-    //Max Height
-    double kMaxHeight = 2.0;
+    //Max Angle
+    double kMaxAngle = 2.0;
 
-    //Min Height
-    double kMinHeight = 0.0;
+    //Min Angle
+    double kMinAngle = 0.0;
 
     //Max voltage to be applied
     double kMaxVoltage = 12.0;
