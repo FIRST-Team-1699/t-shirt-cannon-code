@@ -28,8 +28,8 @@ public interface WristLoop {
     double kMaxZeroingVoltage = 4.0;
 
     //Control loop constants
-    double Kp = 1.0;
-    double Kv = 5.0;
+    double Kp = 3.0;
+    double Kv = 10.0;
 
     //Returns voltage that needs to be applied to the wrist motor
     double update(double encoder, boolean limitTriggered, boolean enables);

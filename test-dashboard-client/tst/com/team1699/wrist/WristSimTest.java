@@ -38,7 +38,7 @@ public class WristSimTest {
 
         pw.close();
 
-        assertEquals(goal, simWrist.angle, 0.01);
+        assertEquals(goal, simWrist.angle, 0.5);
     }
 
     void simulateTime(final double voltage, final double time){
@@ -51,11 +51,11 @@ public class WristSimTest {
             simWrist.angle += simWrist.aVel * kSimTime;
             simWrist.aVel += acceleration * kSimTime;
             currentTime += kSimTime;
-//            if(simWrist.limitTriggered()){
-//                assertTrue(simWrist.aVel > -10.0, String.format("System running at %f rpm which is less than -10.0", simWrist.aVel));
-//            }
-//            assertTrue(simWrist.angle >= WristLoop.kMinAngle - 0.1, String.format("System is at %f meters which is less than minimum angle of %f", simWrist.angle, WristLoop.kMinAngle));
-//            assertTrue(simWrist.angle <= WristLoop.kMaxAngle + 0.1, String.format("System is at %f meters which is greater than the maximum angle of %f", simWrist.angle, WristLoop.kMaxAngle));
+            if(simWrist.limitTriggered()){
+                assertTrue(simWrist.aVel > -10.0, String.format("System running at %f rpm which is less than -10.0", simWrist.aVel));
+            }
+            assertTrue(simWrist.angle >= WristLoop.kMinAngle - 1.0, String.format("System is at %f meters which is less than minimum angle of %f", simWrist.angle, WristLoop.kMinAngle));
+            assertTrue(simWrist.angle <= WristLoop.kMaxAngle + 1.0, String.format("System is at %f meters which is greater than the maximum angle of %f", simWrist.angle, WristLoop.kMaxAngle));
         }
     }
 }
