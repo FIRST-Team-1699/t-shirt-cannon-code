@@ -33,16 +33,16 @@ public class BarrelWristSim {
 
     BarrelWristSim(){}
 
-    double angle = 0.1;
+    double angle = 5.0;
     double aVel = 0.0;
-    double offset = 0.1;
+    double offset = 5.0;
 
     double getAcceleration(final double voltage){
         return (voltage - (aVel / Kv)) * ((kG * Kt) / (kInertia * kResistance));
     }
 
     boolean limitTriggered(){
-        return angle > -0.04 && angle < 0.0;
+        return angle > -1.0 && angle < 0.0;
     }
 
     double encoder(){

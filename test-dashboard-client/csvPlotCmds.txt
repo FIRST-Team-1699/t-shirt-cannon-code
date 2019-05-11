@@ -1,4 +1,4 @@
 set xrange [0:100]
 set grid
 set title 'motion'
-plot '<filepath>' using 1:2 title 'position', '<filepath>' using 1:3 title 'voltage', '<filepath>' using 1:6 title 'goal', '<filepath>' using 1:8 title 'error'
+plot '<filepath>' using 1:2 title 'angle', '' using 1:3 title 'voltage', '<filepath>' using 1:6 title 'goal', '<filepath>' using 1:8 title 'error', <filepath> using 1:4 title 'aVel'
