@@ -7,6 +7,10 @@ import com.frc1699.utils.SingleSideSpike;
 import com.frc1699.constants.Constants;
 import com.frc1699.utils.CircularQueue;
 import com.frc1699.Barrel.Barrel;
+import com.frc1699.utils.Utils;
+import com.frc1699.wrist.BarrelWrist;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
@@ -55,6 +59,14 @@ public class Robot extends IterativeRobot {
     
     //Says if trigger is released
     private boolean released = true;
+    
+    //Wrist Vars
+    //Encoder
+    Encoder wristEncoder;
+    //Magnetic Limit Switch
+    DigitalInput wristLowerLimit;
+    //Subsystem
+    BarrelWrist wrist;
     
     public void robotInit() {
         //Drive motors
@@ -114,13 +126,18 @@ public class Robot extends IterativeRobot {
         barrelList.addData(barrel5);
         barrelList.addData(barrel6);
         barrelList.addData(barrel7);
+        
+        //Wrist
+        wrist = new BarrelWrist();
+        
+        //TODO Add init for wrist encoder and limit switch
     }
 
     public void teleopPeriodic() {
         //Runs drive train
         driveTrain.arcadeDrive(rightStick);
         
-        //Used for debuging/fires single barrel out of order
+        //Used for debuging/fires single barrel
         debugControl();
         
         //Fires barrels in sequence
@@ -129,6 +146,15 @@ public class Robot extends IterativeRobot {
         //Resets barrel state
         if(rightStick.getRawButton(3)){
             resetBarrels();
+        }
+        
+        //Update the wrist
+        wrist.update(wristEncoder.get(), wristLowerLimit.get(), true); //TODO Invert limit if needed
+        
+        //Code to run barrel rotation
+        double desiredAngle = rightStick.getThrottle(); //TODO Scale
+        if(Utils.epsilonEquals(wrist.getGoal(), desiredAngle, 1.0)){
+            wrist.setGoal(desiredAngle);
         }
     }
 
