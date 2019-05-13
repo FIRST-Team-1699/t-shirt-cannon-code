@@ -1,4 +1,4 @@
-package com.frc1699.wrist;
+package com.frc1699.subsystem;
 
 public interface WristLoop {
 

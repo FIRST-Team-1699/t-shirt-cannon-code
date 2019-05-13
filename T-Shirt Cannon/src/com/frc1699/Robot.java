@@ -1,14 +1,11 @@
 package com.frc1699;
 
-
-
-
 import com.frc1699.utils.SingleSideSpike;
 import com.frc1699.constants.Constants;
 import com.frc1699.utils.CircularQueue;
-import com.frc1699.Barrel.Barrel;
+import com.frc1699.subsystem.Barrel;
 import com.frc1699.utils.Utils;
-import com.frc1699.wrist.BarrelWrist;
+import com.frc1699.subsystem.BarrelWrist;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -16,6 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
+import java.util.Hashtable;
 
 public class Robot extends IterativeRobot {    
     //Drive motors
@@ -59,7 +57,7 @@ public class Robot extends IterativeRobot {
     
     //Says if trigger is released
     private boolean released = true;
-    
+        
     //Wrist Vars
     //Encoder
     Encoder wristEncoder;
@@ -129,8 +127,9 @@ public class Robot extends IterativeRobot {
         
         //Wrist
         wrist = new BarrelWrist();
-        
         //TODO Add init for wrist encoder and limit switch
+        wristEncoder = new Encoder(0, 0, 0, 0);
+        wristLowerLimit = new DigitalInput(0);
     }
 
     public void teleopPeriodic() {
@@ -152,7 +151,7 @@ public class Robot extends IterativeRobot {
         wrist.update(wristEncoder.get(), wristLowerLimit.get(), true); //TODO Invert limit if needed
         
         //Code to run barrel rotation
-        double desiredAngle = rightStick.getThrottle(); //TODO Scale
+        double desiredAngle = (rightStick.getThrottle() + 1.0) * 30.0;
         if(Utils.epsilonEquals(wrist.getGoal(), desiredAngle, 1.0)){
             wrist.setGoal(desiredAngle);
         }
@@ -174,7 +173,7 @@ public class Robot extends IterativeRobot {
     
     //Change to use single sided solenoid
     private void debugControl(){
-        //Fires barrel based on what button is pressed       
+        //Fires barrel based on what button is pressed
         if(rightStick.getRawButton(Constants.righStickBarrel1Fire)){
             relay5.set(Relay.Value.kReverse);
             try {
