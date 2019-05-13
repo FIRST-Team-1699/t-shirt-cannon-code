@@ -66,6 +66,14 @@ public class BarrelHolder {
         barrel5 = new Barrel(5, spike5);
         barrel6 = new Barrel(6, spike6);
         barrel7 = new Barrel(7, spike7);
+        
+        barrelList.createNodeAtEnd(barrel1);
+        barrelList.createNodeAtEnd(barrel2);
+        barrelList.createNodeAtEnd(barrel3);
+        barrelList.createNodeAtEnd(barrel4);
+        barrelList.createNodeAtEnd(barrel5);
+        barrelList.createNodeAtEnd(barrel6);
+        barrelList.createNodeAtEnd(barrel7);
     }
     
     //Fires the next loaded barrel. Will return true if attempt was successful
