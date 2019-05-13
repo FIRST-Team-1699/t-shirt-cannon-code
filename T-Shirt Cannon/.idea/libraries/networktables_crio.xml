@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="networktables-crio">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/networktables-crio.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/squawk.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/wpilibj.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/wpilibj.project.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/networktables-crio.src.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/wpilibj.src.zip!/" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/wpilibj.project.zip!/RunTestsProject/src" />
+      <root url="jar://$PROJECT_DIR$/../../../FRC_2014_Libs/sunspotfrcsdk/lib/wpilibj.project.zip!/src" />
+    </SOURCES>
+  </library>
+</component>
