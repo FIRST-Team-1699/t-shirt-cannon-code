@@ -1,14 +1,59 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.frc1699.utils;
 
-/**
- *
- * @author Jakob Misbach
- */
 public class CircularLinkedList {
-    
+
+    private Node head;
+    private Node tail;
+
+    private Node currentNode = head; //Used for iterator
+
+    public CircularLinkedList(){
+        head = null;
+    }
+
+    public void createNodeAtEnd(Object data){
+        Node node = new Node(data);
+        
+        if(head == null){
+            head = node;
+            tail = node;
+            return;
+        }
+
+        tail.next = node;
+        tail = node;
+        tail.next = head;
+    }
+
+    //Use for debugging only
+    public void printList(){
+        Node currentNode = head;
+        while(currentNode.next != null){
+            currentNode = currentNode.next;
+        }
+    }
+
+    public boolean hasNext() {
+        return head != null && tail != null; //Because circular will always have next unless null
+    }
+
+    public Node next() {
+        Node returnNode = currentNode.next;
+        currentNode = currentNode.next;
+        return returnNode;
+    }
+
+    private static class Node {
+        Object data;
+        Node next;
+
+        Node(Object data) {
+            this.data = data;
+            next = null;
+        }
+
+        public String toString() {
+            return data.toString();
+        }
+    }
 }

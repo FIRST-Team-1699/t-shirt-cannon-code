@@ -77,11 +77,29 @@ public class BarrelHolder {
     public boolean fireManual(int barrelNumber){
         switch(barrelNumber){
             case 1:
-                break;
+                barrel1.fire();
+                return true;
+            case 2:
+                barrel2.fire();
+                return true;
+            case 3:
+                barrel3.fire();
+                return true;
+            case 4:
+                barrel4.fire();
+                return true;
+            case 5:
+                barrel5.fire();
+                return true;
+            case 6:
+                barrel6.fire();
+                return true;
+            case 7:
+                barrel7.fire();
+                return true;
             default:
-                break;
+                return false;
         }
-        return false;
     }
     
     //Resets the state of all barrels
