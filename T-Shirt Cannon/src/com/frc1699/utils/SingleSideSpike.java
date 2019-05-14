@@ -26,7 +26,7 @@ public class SingleSideSpike {
     public void trigger(){
         r.set(v);
         try {
-            Thread.sleep(Constants.sleepTime);
+            Thread.sleep(Constants.openTime);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }

@@ -3,16 +3,18 @@ package com.frc1699.constants;
 public class Constants {
     
     //Delays
-    public static final int sleepTime = 500; //In milisec
+    public static final int openTime = 500; //In millisec
     
     //Talons
-    public static final int talon1Port = 1;
-    public static final int talon2Port = 2;
-    public static final int talon3Port = 3;
-    public static final int talon4Port = 4;
+    public static final int talon1Port = 1; //Port Master
+    public static final int talon2Port = 2; //Port Slave
+    public static final int talon3Port = 3; //Star Master
+    public static final int talon4Port = 4; //Star Slave
+    public static final int talon5Port = 5; //Strafe Master or Port Slave
+    public static final int talon6Port = 6; //Strafe Slave or Star Slave
     
     //Joysticks
-    public static final int rightStickPort = 2;
+    public static final int driveStickPort = 2;
     
     //Relays
     public static final int relay5Port = 5;
