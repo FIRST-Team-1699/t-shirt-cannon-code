@@ -2,7 +2,7 @@ package com.frc1699.subsystem;
 
 import com.frc1699.IO.ControlBoard;
 import com.frc1699.constants.Constants;
-import com.frc1699.utils.SpeedControllerGroup;
+import com.frc1699.utils.drive.SpeedControllerGroup;
 import com.frc1699.utils.drive.DriveHelper;
 import com.frc1699.utils.drive.DriveSignal;
 import edu.wpi.first.wpilibj.Talon;
@@ -17,6 +17,7 @@ public class DriveTrain implements DriveLoop {
 
     private final OutputSignal outputSignal;
 
+    //TODO Convert from SpeedControllerGroup to BetterTalon
     public DriveTrain(final int driveState){
         this.driveState = driveState;
         this.outputSignal = new OutputSignal();
@@ -71,7 +72,7 @@ public class DriveTrain implements DriveLoop {
 
     private void runHDrive(){
         //TODO Check correct axis
-        DriveSignal signal = DriveHelper.calcHDrive(ControlBoard.getInstance().getDriveStick().getX(), ControlBoard.getInstance().getDriveStick().getY(), ControlBoard.getInstance().getDriveStick().getZ());
+        DriveSignal signal = DriveHelper.calcHDrive(ControlBoard.getInstance().getDriveStick().getX(), ControlBoard.getInstance().getDriveStick().getY(), ControlBoard.getInstance().getDriveStick().getZ(), ControlBoard.getInstance().getDriveStick().getTrigger());
         outputSignal.portVoltage = signal.portVoltage;
         outputSignal.starVoltage = signal.starVoltage;
         outputSignal.strafeVoltage = signal.strafeVoltage;
