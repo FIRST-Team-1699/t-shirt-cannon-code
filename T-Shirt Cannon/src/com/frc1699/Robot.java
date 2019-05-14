@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
     
     public void robotInit() {
         //Robot Drive
-        driveTrain = new DriveTrain(DriveLoop.State.TANK_DRIVE); //TODO Implement H-Drive
+        driveTrain = new DriveTrain(DriveLoop.State.TANK_DRIVE); //TODO Implement H-Drive (hardware limit?)
         
         //Wrist
         wrist = new BarrelWrist();

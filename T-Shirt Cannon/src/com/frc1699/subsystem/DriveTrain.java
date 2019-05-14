@@ -67,7 +67,6 @@ public class DriveTrain implements DriveLoop {
         DriveSignal signal = DriveHelper.calcTankDrive(ControlBoard.getInstance().getDriveStick().getX(), ControlBoard.getInstance().getDriveStick().getY(), ControlBoard.getInstance().getDriveStick().getTrigger());
         outputSignal.portVoltage = signal.portVoltage;
         outputSignal.starVoltage = signal.starVoltage;
-        outputSignal.strafeVoltage = 0;
     }
 
     private void runHDrive(){
