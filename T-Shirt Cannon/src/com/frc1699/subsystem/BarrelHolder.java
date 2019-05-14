@@ -8,33 +8,35 @@ import edu.wpi.first.wpilibj.Relay;
 public class BarrelHolder {
     
     //Spikes
-    Relay relay5;
-    Relay relay6;
-    Relay relay7;
-    Relay relay8;
-    
+    private Relay relay5;
+    private Relay relay6;
+    private Relay relay7;
+    private Relay relay8;
+
     //Single Relay Side
-    SingleSideSpike spike1;
-    SingleSideSpike spike2;
-    SingleSideSpike spike3;
-    SingleSideSpike spike4;
-    SingleSideSpike spike5;
-    SingleSideSpike spike6;
-    SingleSideSpike spike7;
-    
+    private SingleSideSpike spike1;
+    private SingleSideSpike spike2;
+    private SingleSideSpike spike3;
+    private SingleSideSpike spike4;
+    private SingleSideSpike spike5;
+    private SingleSideSpike spike6;
+    private SingleSideSpike spike7;
+
     //Barrels
-    Barrel barrel1;
-    Barrel barrel2;
-    Barrel barrel3;
-    Barrel barrel4;
-    Barrel barrel5;
-    Barrel barrel6;
-    Barrel barrel7;
-    
+    private Barrel barrel1;
+    private Barrel barrel2;
+    private Barrel barrel3;
+    private Barrel barrel4;
+    private Barrel barrel5;
+    private Barrel barrel6;
+    private Barrel barrel7;
+
     //Barrel List
     private CircularLinkedList barrelList;
-    
+
     public BarrelHolder(){
+        barrelList = new CircularLinkedList();
+
         //Spikes
         /*
         *kOff - Turns both relay outputs off
@@ -47,7 +49,7 @@ public class BarrelHolder {
         relay6 = new Relay(Constants.relay6Port);
         relay7 = new Relay(Constants.relay7Port);
         relay8 = new Relay(Constants.relay8Port);
-        
+
         //Even numbered barrels use kForward, Odd numbers use kReverse
         //SingleSideSpikes
         spike1 = new SingleSideSpike(1, relay5);
@@ -57,7 +59,7 @@ public class BarrelHolder {
         spike5 = new SingleSideSpike(5, relay7);
         spike6 = new SingleSideSpike(6, relay7);
         spike7 = new SingleSideSpike(7, relay8);
-        
+
         //Barrels
         barrel1 = new Barrel(1, spike1);
         barrel2 = new Barrel(2, spike2);
@@ -66,7 +68,7 @@ public class BarrelHolder {
         barrel5 = new Barrel(5, spike5);
         barrel6 = new Barrel(6, spike6);
         barrel7 = new Barrel(7, spike7);
-        
+
         barrelList.createNodeAtEnd(barrel1);
         barrelList.createNodeAtEnd(barrel2);
         barrelList.createNodeAtEnd(barrel3);
@@ -75,13 +77,27 @@ public class BarrelHolder {
         barrelList.createNodeAtEnd(barrel6);
         barrelList.createNodeAtEnd(barrel7);
     }
-    
+
+    //Updates the state of each barrel
+    public void update(){
+        //TODO Convert to use a data structure
+        barrel1.update();
+        barrel2.update();
+        barrel3.update();
+        barrel4.update();
+        barrel5.update();
+        barrel6.update();
+        barrel7.update();
+    }
+
     //Fires the next loaded barrel. Will return true if attempt was successful
     public boolean fireNext(){
-        return false;
+        Barrel next = (Barrel) (barrelList.next().getData());
+        next.fire();
+        return true;
     }
-    
-    //Will fire given barrrel number. Will return true if barrel was successfully fired
+
+    //Will fire given barrel number. Will return true if barrel was successfully fired
     public boolean fireManual(int barrelNumber){
         switch(barrelNumber){
             case 1:
@@ -109,7 +125,7 @@ public class BarrelHolder {
                 return false;
         }
     }
-    
+
     //Resets the state of all barrels
     public void resetBarrels(){
         barrel1.setFired(false);

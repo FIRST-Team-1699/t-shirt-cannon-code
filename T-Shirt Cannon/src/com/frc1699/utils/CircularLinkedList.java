@@ -43,13 +43,17 @@ public class CircularLinkedList {
         return returnNode;
     }
 
-    private static class Node {
+    public static class Node {
         Object data;
         Node next;
 
         Node(Object data) {
             this.data = data;
             next = null;
+        }
+
+        public Object getData(){
+            return data;
         }
 
         public String toString() {

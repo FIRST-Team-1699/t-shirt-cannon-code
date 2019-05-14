@@ -14,7 +14,12 @@ public class Barrel {
         this.spike = spike;
         fired = false;
     }
-    
+
+    //Updates barrel state
+    public void update(){
+
+    }
+
     //Fires barrel
     public void fire(){
         spike.trigger();
