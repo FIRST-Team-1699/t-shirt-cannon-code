@@ -23,11 +23,11 @@ public class Constants {
     public static final int relay8Port = 8;
     
     //JoystickButtons
-    public static final int righStickBarrel1Fire = 7;
-    public static final int righStickBarrel2Fire = 8;
-    public static final int righStickBarrel3Fire = 9;
-    public static final int righStickBarrel4Fire = 10;
-    public static final int righStickBarrel5Fire = 11;
-    public static final int righStickBarrel6Fire = 12;
-    public static final int righStickBarrel7Fire = 2;
+    public static final int rightStickBarrel1Fire = 7;
+    public static final int rightStickBarrel2Fire = 8;
+    public static final int rightStickBarrel3Fire = 9;
+    public static final int rightStickBarrel4Fire = 10;
+    public static final int rightStickBarrel5Fire = 11;
+    public static final int rightStickBarrel6Fire = 12;
+    public static final int rightStickBarrel7Fire = 2;
 }

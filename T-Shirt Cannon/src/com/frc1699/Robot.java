@@ -96,25 +96,25 @@ public class Robot extends IterativeRobot {
     //Change to use single sided solenoid
     private void debugControl(){
         //Fires barrel based on what button is pressed
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel1Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel1Fire)){
             barrelHolder.fireManual(1);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel2Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel2Fire)){
             barrelHolder.fireManual(2);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel3Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel3Fire)){
             barrelHolder.fireManual(3);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel4Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel4Fire)){
             barrelHolder.fireManual(4);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel5Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel5Fire)){
             barrelHolder.fireManual(5);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel6Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel6Fire)){
             barrelHolder.fireManual(6);
         }
-        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.righStickBarrel7Fire)){
+        if(ControlBoard.getInstance().getDriveStick().getRawButton(Constants.rightStickBarrel7Fire)){
             barrelHolder.fireManual(7);
         }
     }

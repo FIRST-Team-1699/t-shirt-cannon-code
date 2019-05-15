@@ -29,6 +29,11 @@ public class Pneumatics implements PneumaticsLoop {
 
     //Returns acceleration in m/s^2
     public static double calcAcceleration(final double pressure){
-        return ((pressure * kPsiPaConv * kCrossArea) / kShirtMass) - ((kDragCoeff * kAirDensity * kCrossArea * 0.5) / kShirtMass);
+        return ((pressure * kPsiPaConv * kCrossArea) / kShirtMass) - ((kDragCoeff * kAirDensity * 0.0 * kCrossArea * 0.5) / kShirtMass);
+    }
+
+    //Returns the pressure in Psi required to achieve an acceleration
+    public static double calcPressure(final double acceleration){
+        return ((acceleration * kShirtMass) / (kPsiPaConv * kCrossArea)) - ((kDragCoeff * kAirDensity * 0.0 * kCrossArea * 0.5) / (kPsiPaConv * kCrossArea));
     }
 }
