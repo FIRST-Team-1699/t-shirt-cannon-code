@@ -13,11 +13,11 @@ public interface PneumaticsLoop {
     //Drag Coeff
     double kDragCoeff = 0.82;
     //Diameter of t-shirt in meters
-    double kShirtDiameter = 0.0; //TODO Change
+    double kShirtDiameter = 2.5 * 0.0254; //TODO Check
     //Cross-sectional area of shirt in meters^2
     double kCrossArea = Math.PI * (kShirtDiameter / 2) * (kShirtDiameter / 2); //TODO Change
     //Mass of T-Shirt in kg
-    double kShirtMass = 0.15; //TODO Change
+    double kShirtMass = 0.15; //TODO Check
     //Max velocity in m/s
     double kMaxVelocity = 2 * Pneumatics.calcAcceleration(125.0) * kBarrelLength;
 

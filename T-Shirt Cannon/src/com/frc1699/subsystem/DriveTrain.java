@@ -2,18 +2,17 @@ package com.frc1699.subsystem;
 
 import com.frc1699.IO.ControlBoard;
 import com.frc1699.constants.Constants;
-import com.frc1699.utils.drive.SpeedControllerGroup;
+import com.frc1699.utils.drive.BetterTalon;
 import com.frc1699.utils.drive.DriveHelper;
 import com.frc1699.utils.drive.DriveSignal;
-import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain implements DriveLoop {
 
     private final int driveState;
 
-    private final SpeedControllerGroup portGroup;
-    private final SpeedControllerGroup starGroup;
-    private final SpeedControllerGroup strafeGroup;
+    private final BetterTalon portMaster;
+    private final BetterTalon starMaster;
+    private final BetterTalon strafeMaster;
 
     private final OutputSignal outputSignal;
 
@@ -24,20 +23,27 @@ public class DriveTrain implements DriveLoop {
 
         switch (driveState){
             case State.TANK_DRIVE:
-                portGroup = new SpeedControllerGroup(1, new Talon[]{new Talon(Constants.talon1Port), new Talon(Constants.talon2Port), new Talon(Constants.talon5Port)});
-                starGroup = new SpeedControllerGroup(3, new Talon[]{new Talon(Constants.talon3Port), new Talon(Constants.talon4Port), new Talon(Constants.talon6Port)});
-                strafeGroup = null;
+                portMaster = new BetterTalon(Constants.talon1Port);
+                portMaster.addSlave(Constants.talon2Port);
+                portMaster.addSlave(Constants.talon5Port);
+                starMaster = new BetterTalon(Constants.talon3Port);
+                starMaster.addSlave(Constants.talon4Port);
+                starMaster.addSlave(Constants.talon6Port);
+                strafeMaster = null;
                 break;
             case State.H_DRIVE:
-                portGroup = new SpeedControllerGroup(1, new Talon[]{new Talon(Constants.talon1Port), new Talon(Constants.talon2Port)});
-                starGroup = new SpeedControllerGroup(3, new Talon[]{new Talon(Constants.talon3Port), new Talon(Constants.talon4Port)});
-                strafeGroup = new SpeedControllerGroup(5, new Talon[]{new Talon(Constants.talon5Port), new Talon(Constants.talon6Port)});;
+                portMaster = new BetterTalon(Constants.talon1Port);
+                portMaster.addSlave(Constants.talon2Port);
+                starMaster = new BetterTalon(Constants.talon3Port);
+                starMaster.addSlave(Constants.talon4Port);
+                strafeMaster = new BetterTalon(Constants.talon5Port);
+                starMaster.addSlave(Constants.talon6Port);
                 break;
             default:
                 //TODO Throw exception
-                portGroup = null;
-                starGroup = null;
-                strafeGroup = null;
+                portMaster = null;
+                starMaster = null;
+                strafeMaster = null;
                 System.err.println("Invalid Drive State Requested");
         }
     }
@@ -55,10 +61,10 @@ public class DriveTrain implements DriveLoop {
                 System.err.println("Invalid Drive State Requested");
         }
 
-        portGroup.set(outputSignal.portVoltage);
-        starGroup.set(outputSignal.starVoltage);
-        if(strafeGroup != null){
-            strafeGroup.set(outputSignal.strafeVoltage);
+        portMaster.set(outputSignal.portVoltage);
+        starMaster.set(outputSignal.starVoltage);
+        if(strafeMaster != null){
+            strafeMaster.set(outputSignal.strafeVoltage);
         }
     }
 
