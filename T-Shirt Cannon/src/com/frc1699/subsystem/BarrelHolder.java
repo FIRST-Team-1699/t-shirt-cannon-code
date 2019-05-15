@@ -8,34 +8,38 @@ import edu.wpi.first.wpilibj.Relay;
 public class BarrelHolder {
     
     //Spikes
-    private Relay relay5;
-    private Relay relay6;
-    private Relay relay7;
-    private Relay relay8;
+    private final Relay relay5;
+    private final Relay relay6;
+    private final Relay relay7;
+    private final Relay relay8;
 
     //Single Relay Side
-    private SingleSideSpike spike1;
-    private SingleSideSpike spike2;
-    private SingleSideSpike spike3;
-    private SingleSideSpike spike4;
-    private SingleSideSpike spike5;
-    private SingleSideSpike spike6;
-    private SingleSideSpike spike7;
+    private final SingleSideSpike spike1;
+    private final SingleSideSpike spike2;
+    private final SingleSideSpike spike3;
+    private final SingleSideSpike spike4;
+    private final SingleSideSpike spike5;
+    private final SingleSideSpike spike6;
+    private final SingleSideSpike spike7;
 
     //Barrels
-    private Barrel barrel1;
-    private Barrel barrel2;
-    private Barrel barrel3;
-    private Barrel barrel4;
-    private Barrel barrel5;
-    private Barrel barrel6;
-    private Barrel barrel7;
+    private final Barrel barrel1;
+    private final Barrel barrel2;
+    private final Barrel barrel3;
+    private final Barrel barrel4;
+    private final Barrel barrel5;
+    private final Barrel barrel6;
+    private final Barrel barrel7;
 
     //Barrel List
-    private CircularLinkedList barrelList;
+    private final CircularLinkedList barrelList;
 
-    public BarrelHolder(){
+    //Pneumatics
+    private final Pneumatics pneumatics;
+
+    public BarrelHolder(final Pneumatics pneumatics){
         barrelList = new CircularLinkedList();
+        this.pneumatics = pneumatics;
 
         //Spikes
         /*
@@ -81,13 +85,14 @@ public class BarrelHolder {
     //Updates the state of each barrel
     public void update(){
         //TODO Convert to use a data structure
-        barrel1.update();
-        barrel2.update();
-        barrel3.update();
-        barrel4.update();
-        barrel5.update();
-        barrel6.update();
-        barrel7.update();
+        double pressure = pneumatics.getSystemPressure();
+        barrel1.update(pressure);
+        barrel2.update(pressure);
+        barrel3.update(pressure);
+        barrel4.update(pressure);
+        barrel5.update(pressure);
+        barrel6.update(pressure);
+        barrel7.update(pressure);
     }
 
     //Fires the next loaded barrel. Will return true if attempt was successful

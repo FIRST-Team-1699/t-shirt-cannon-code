@@ -8,7 +8,9 @@ public class Barrel {
     private SingleSideSpike spike;
     private int id;
     private boolean fired;
-    
+
+    private double systemPressure = 0.0;
+
     public Barrel(int id, SingleSideSpike spike){
         this.id = id;
         this.spike = spike;
@@ -16,8 +18,8 @@ public class Barrel {
     }
 
     //Updates barrel state
-    public void update(){
-
+    public void update(final double pressure){
+        systemPressure = pressure;
     }
 
     //Fires barrel

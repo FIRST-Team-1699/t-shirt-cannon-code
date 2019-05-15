@@ -1,30 +1,28 @@
 package com.frc1699;
 
 import com.frc1699.IO.ControlBoard;
-import com.frc1699.subsystem.BarrelHolder;
 import com.frc1699.constants.Constants;
+import com.frc1699.subsystem.BarrelHolder;
+import com.frc1699.subsystem.BarrelWrist;
 import com.frc1699.subsystem.DriveLoop;
 import com.frc1699.subsystem.DriveTrain;
+import com.frc1699.subsystem.Pneumatics;
 import com.frc1699.utils.Utils;
-import com.frc1699.subsystem.BarrelWrist;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Talon;
 
-public class Robot extends IterativeRobot {    
-    //Drive motors
-    private Talon portMaster;
-    private Talon portSlave;
-    private Talon starMaster;
-    private Talon starSlave;
-    
+public class Robot extends IterativeRobot {
+
     //Drive train
     private DriveTrain driveTrain;
         
     //Says if trigger is released
     private boolean released = true;
-        
+
+    //Pneumatics
+    private Pneumatics pneumatics;
+
     //Wrist Vars
     //Encoder
     private Encoder wristEncoder;
@@ -46,8 +44,11 @@ public class Robot extends IterativeRobot {
         wristEncoder = new Encoder(0, 0, 0, 0);
         wristLowerLimit = new DigitalInput(0);
 
+        //Pneumatics
+        pneumatics = new Pneumatics();
+
         //Barrel Holder
-        barrelHolder = new BarrelHolder();
+        barrelHolder = new BarrelHolder(pneumatics);
     }
 
     public void teleopPeriodic() {
@@ -76,6 +77,9 @@ public class Robot extends IterativeRobot {
         if(Utils.epsilonEquals(wrist.getGoal(), desiredAngle, 1.0)){
             wrist.setGoal(desiredAngle);
         }
+
+        //Update pressure
+        pneumatics.update();
     }
 
     private void stateBasedControl(){
