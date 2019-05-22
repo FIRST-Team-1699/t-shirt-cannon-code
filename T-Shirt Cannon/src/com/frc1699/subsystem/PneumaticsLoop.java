@@ -2,7 +2,11 @@ package com.frc1699.subsystem;
 
 public interface PneumaticsLoop {
 
-    int kPreasureSensorPort = 0; //TODO Change
+    int kPressureSensorPort = 0; //TODO Change
+
+    //Min and max system pressure in PSI TODO check min and max pressures
+    double kMaxPressure = 125.0;
+    double kMinPressure = 0.0;
 
     //Length of the Cannon Barrels in meters
     double kBarrelLength = 30.0 * 0.0254;
