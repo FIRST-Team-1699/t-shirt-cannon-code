@@ -34,6 +34,9 @@ public class Robot extends IterativeRobot {
     //Barrel Holder
     private BarrelHolder barrelHolder;
     
+    //TODO Remove stuff that is not needed for current robot
+    //TODO Add client
+    
     public void robotInit() {
         //Robot Drive
         driveTrain = new DriveTrain(DriveLoop.State.TANK_DRIVE); //TODO Implement H-Drive (hardware limit?)
