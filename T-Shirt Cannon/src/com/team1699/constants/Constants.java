@@ -14,7 +14,7 @@ public class Constants {
     public static final int talon6Port = 6; //Strafe Slave or Star Slave
     
     //Joysticks
-    public static final int driveStickPort = 2;
+    public static final int driveStickPort = 1;
     
     //Relays
     public static final int relay5Port = 5;

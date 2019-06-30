@@ -86,6 +86,7 @@ public class BarrelHolder {
     //Updates the state of each barrel
     public void update(){
         //TODO Convert to use a data structure
+        System.out.println("Update barrel holder");
         double pressure = pneumatics.getSystemPressure();
         barrel1.update(pressure);
         barrel2.update(pressure);

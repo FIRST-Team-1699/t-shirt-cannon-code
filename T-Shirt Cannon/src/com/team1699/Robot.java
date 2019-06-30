@@ -54,6 +54,7 @@ public class Robot extends IterativeRobot {
         //Barrel Holder
         barrelHolder = new BarrelHolder(pneumatics);
 
+        System.out.println("Registering barrels");
         Client.getInstance().addMessage("1 1");
         Client.getInstance().addMessage("2 1");
         Client.getInstance().addMessage("3 1");
@@ -61,9 +62,11 @@ public class Robot extends IterativeRobot {
         Client.getInstance().addMessage("5 1");
         Client.getInstance().addMessage("6 1");
         Client.getInstance().addMessage("7 1");
+        System.out.println("Finished registering barrels");
     }
 
     public void teleopPeriodic() {
+        System.out.println("Main Update");
         //Update drive train
         driveTrain.update();
         

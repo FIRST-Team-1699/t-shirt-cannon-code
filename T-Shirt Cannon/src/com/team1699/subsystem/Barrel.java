@@ -28,6 +28,7 @@ public class Barrel {
         spike.trigger();
         fired = true;
         Client.getInstance().addMessage(id + " 0");
+        System.out.println(id + " has been fired!");
     }
     
     //Getters/Setters
