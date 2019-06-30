@@ -45,8 +45,8 @@ public class Robot extends IterativeRobot {
         //Wrist
         wrist = new BarrelWrist();
         //TODO Add init for wrist encoder and limit switch
-        wristEncoder = new Encoder(0, 0, 0, 0);
-        wristLowerLimit = new DigitalInput(0);
+        //wristEncoder = new Encoder(0, 0, 0, 0);
+        //wristLowerLimit = new DigitalInput(0);
 
         //Pneumatics
         pneumatics = new Pneumatics();
