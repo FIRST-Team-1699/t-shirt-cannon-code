@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 public class Pneumatics implements PneumaticsLoop {
 
     //Rev Robotics Pressure Sensor
-    private final AnalogChannel pressureSensor;
+    //private final AnalogChannel pressureSensor;
 
     //Current system pressure
     private double pressure = 0.0;
@@ -17,12 +17,12 @@ public class Pneumatics implements PneumaticsLoop {
     private boolean wantPressureChange = false;
 
     public Pneumatics(){
-        pressureSensor = new AnalogChannel(kPressureSensorPort);
+        //pressureSensor = new AnalogChannel(kPressureSensorPort);
     }
 
     public void update() {
         //Records current system pressure
-        pressure = 250.0 * pressureSensor.getVoltage() / 5.0 - 25.0;
+        //pressure = 250.0 * pressureSensor.getVoltage() / 5.0 - 25.0;
 
         //Update regulator to change system pressure
         if(wantPressureChange) {
