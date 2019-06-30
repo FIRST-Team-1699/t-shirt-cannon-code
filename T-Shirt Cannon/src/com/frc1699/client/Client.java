@@ -24,7 +24,7 @@ public class Client  implements Runnable{
     
     private final Queue writeQueue;
     
-    private final String host = "localhost";
+    private final String host = "10.16.00.11";
     private final int port = 12345;
     
     private Thread thread;
