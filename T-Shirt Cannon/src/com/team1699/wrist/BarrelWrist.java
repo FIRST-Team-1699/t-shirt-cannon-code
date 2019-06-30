@@ -1,4 +1,4 @@
-package com.frc1699.wrist;
+package com.team1699.wrist;
 
 public class BarrelWrist implements WristLoop {
 

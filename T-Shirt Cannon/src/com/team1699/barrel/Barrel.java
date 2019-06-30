@@ -1,6 +1,6 @@
-package com.frc1699.Barrel;
+package com.team1699.barrel;
 
-import com.frc1699.utils.SingleSideSpike;
+import com.team1699.utils.SingleSideSpike;
 
 public class Barrel {
     

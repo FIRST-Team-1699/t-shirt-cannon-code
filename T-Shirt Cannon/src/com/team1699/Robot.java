@@ -1,14 +1,11 @@
-package com.frc1699;
+package com.team1699;
 
-
-
-
-import com.frc1699.utils.SingleSideSpike;
-import com.frc1699.constants.Constants;
-import com.frc1699.utils.CircularQueue;
-import com.frc1699.Barrel.Barrel;
-import com.frc1699.utils.Utils;
-import com.frc1699.wrist.BarrelWrist;
+import com.team1699.utils.SingleSideSpike;
+import com.team1699.constants.Constants;
+import com.team1699.utils.CircularQueue;
+import com.team1699.barrel.Barrel;
+import com.team1699.utils.Utils;
+import com.team1699.wrist.BarrelWrist;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -134,6 +131,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
+        //System.out.println("SETH IS COOL");
         //Runs drive train
         driveTrain.arcadeDrive(rightStick);
         
@@ -149,13 +147,13 @@ public class Robot extends IterativeRobot {
         }
         
         //Update the wrist
-        wrist.update(wristEncoder.get(), wristLowerLimit.get(), true); //TODO Invert limit if needed
+        //wrist.update(wristEncoder.get(), wristLowerLimit.get(), true); //TODO Invert limit if needed
         
         //Code to run barrel rotation
-        double desiredAngle = rightStick.getThrottle(); //TODO Scale
-        if(Utils.epsilonEquals(wrist.getGoal(), desiredAngle, 1.0)){
-            wrist.setGoal(desiredAngle);
-        }
+//        double desiredAngle = rightStick.getThrottle(); //TODO Scale
+//        if(Utils.epsilonEquals(wrist.getGoal(), desiredAngle, 1.0)){
+//            wrist.setGoal(desiredAngle);
+//        }
     }
 
     private void stateBasedControl(){

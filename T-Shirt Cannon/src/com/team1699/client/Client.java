@@ -1,6 +1,6 @@
-package com.frc1699.client;
+package com.team1699.client;
 
-import com.frc1699.utils.Queue;
+import com.team1699.utils.Queue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
