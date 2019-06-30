@@ -9,7 +9,7 @@ import javax.microedition.io.StreamConnection;
 
 public class Client  implements Runnable{
     
-    private Client instance;
+    private static Client instance;
     
     public static Client getInstance(){
         if(instance == null){
