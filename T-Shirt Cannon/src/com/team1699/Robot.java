@@ -1,14 +1,14 @@
-package com.frc1699;
+package com.team1699;
 
-import com.frc1699.IO.ControlBoard;
-import com.frc1699.client.Client;
-import com.frc1699.constants.Constants;
-import com.frc1699.subsystem.BarrelHolder;
-import com.frc1699.subsystem.BarrelWrist;
-import com.frc1699.subsystem.DriveLoop;
-import com.frc1699.subsystem.DriveTrain;
-import com.frc1699.subsystem.Pneumatics;
-import com.frc1699.utils.Utils;
+import com.team1699.IO.ControlBoard;
+import com.team1699.client.Client;
+import com.team1699.constants.Constants;
+import com.team1699.subsystem.BarrelHolder;
+import com.team1699.subsystem.BarrelWrist;
+import com.team1699.subsystem.DriveLoop;
+import com.team1699.subsystem.DriveTrain;
+import com.team1699.subsystem.Pneumatics;
+import com.team1699.utils.Utils;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;

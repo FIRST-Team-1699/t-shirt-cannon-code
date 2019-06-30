@@ -1,6 +1,6 @@
-package com.frc1699.IO;
+package com.team1699.IO;
 
-import com.frc1699.constants.Constants;
+import com.team1699.constants.Constants;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class ControlBoard {

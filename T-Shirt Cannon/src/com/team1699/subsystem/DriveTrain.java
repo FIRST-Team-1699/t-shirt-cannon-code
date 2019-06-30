@@ -1,10 +1,10 @@
-package com.frc1699.subsystem;
+package com.team1699.subsystem;
 
-import com.frc1699.IO.ControlBoard;
-import com.frc1699.constants.Constants;
-import com.frc1699.utils.drive.BetterTalon;
-import com.frc1699.utils.drive.DriveHelper;
-import com.frc1699.utils.drive.DriveSignal;
+import com.team1699.IO.ControlBoard;
+import com.team1699.constants.Constants;
+import com.team1699.utils.drive.BetterTalon;
+import com.team1699.utils.drive.DriveHelper;
+import com.team1699.utils.drive.DriveSignal;
 
 public class DriveTrain implements DriveLoop {
 

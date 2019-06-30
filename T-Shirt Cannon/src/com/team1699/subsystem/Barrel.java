@@ -1,7 +1,7 @@
-package com.frc1699.subsystem;
+package com.team1699.subsystem;
 
-import com.frc1699.client.Client;
-import com.frc1699.utils.SingleSideSpike;
+import com.team1699.client.Client;
+import com.team1699.utils.SingleSideSpike;
 
 public class Barrel {
     

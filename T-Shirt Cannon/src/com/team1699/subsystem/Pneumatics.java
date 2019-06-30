@@ -1,6 +1,6 @@
-package com.frc1699.subsystem;
+package com.team1699.subsystem;
 
-import com.frc1699.utils.Utils;
+import com.team1699.utils.Utils;
 import edu.wpi.first.wpilibj.AnalogChannel;
 
 public class Pneumatics implements PneumaticsLoop {

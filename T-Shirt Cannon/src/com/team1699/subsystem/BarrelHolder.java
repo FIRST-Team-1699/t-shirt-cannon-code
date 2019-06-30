@@ -1,9 +1,9 @@
-package com.frc1699.subsystem;
+package com.team1699.subsystem;
 
-import com.frc1699.client.Client;
-import com.frc1699.constants.Constants;
-import com.frc1699.utils.CircularLinkedList;
-import com.frc1699.utils.SingleSideSpike;
+import com.team1699.client.Client;
+import com.team1699.constants.Constants;
+import com.team1699.utils.CircularLinkedList;
+import com.team1699.utils.SingleSideSpike;
 import edu.wpi.first.wpilibj.Relay;
 
 public class BarrelHolder {
