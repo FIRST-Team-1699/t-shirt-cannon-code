@@ -16,7 +16,6 @@ public class DriveTrain implements DriveLoop {
 
     private final OutputSignal outputSignal;
 
-    //TODO Convert from SpeedControllerGroup to BetterTalon
     public DriveTrain(final int driveState){
         this.driveState = driveState;
         this.outputSignal = new OutputSignal();

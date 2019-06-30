@@ -1,6 +1,7 @@
 package com.frc1699;
 
 import com.frc1699.IO.ControlBoard;
+import com.frc1699.client.Client;
 import com.frc1699.constants.Constants;
 import com.frc1699.subsystem.BarrelHolder;
 import com.frc1699.subsystem.BarrelWrist;
@@ -52,6 +53,14 @@ public class Robot extends IterativeRobot {
 
         //Barrel Holder
         barrelHolder = new BarrelHolder(pneumatics);
+
+        Client.getInstance().addMessage("1 1");
+        Client.getInstance().addMessage("2 1");
+        Client.getInstance().addMessage("3 1");
+        Client.getInstance().addMessage("4 1");
+        Client.getInstance().addMessage("5 1");
+        Client.getInstance().addMessage("6 1");
+        Client.getInstance().addMessage("7 1");
     }
 
     public void teleopPeriodic() {

@@ -1,5 +1,6 @@
 package com.frc1699.subsystem;
 
+import com.frc1699.client.Client;
 import com.frc1699.utils.SingleSideSpike;
 
 public class Barrel {
@@ -26,6 +27,7 @@ public class Barrel {
     public void fire(){
         spike.trigger();
         fired = true;
+        Client.getInstance().addMessage(id + " 0");
     }
     
     //Getters/Setters

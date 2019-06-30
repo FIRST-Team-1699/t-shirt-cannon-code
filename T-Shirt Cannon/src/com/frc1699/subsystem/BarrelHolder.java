@@ -1,5 +1,6 @@
 package com.frc1699.subsystem;
 
+import com.frc1699.client.Client;
 import com.frc1699.constants.Constants;
 import com.frc1699.utils.CircularLinkedList;
 import com.frc1699.utils.SingleSideSpike;
@@ -134,10 +135,18 @@ public class BarrelHolder {
     //Resets the state of all barrels
     public void resetBarrels(){
         barrel1.setFired(false);
+        Client.getInstance().addMessage("1 1");
         barrel2.setFired(false);
+        Client.getInstance().addMessage("2 1");
         barrel3.setFired(false);
+        Client.getInstance().addMessage("3 1");
         barrel4.setFired(false);
+        Client.getInstance().addMessage("4 1");
         barrel5.setFired(false);
+        Client.getInstance().addMessage("5 1");
         barrel6.setFired(false);
+        Client.getInstance().addMessage("6 1");
+        barrel7.setFired(false);
+        Client.getInstance().addMessage("7 1");
     }
 }

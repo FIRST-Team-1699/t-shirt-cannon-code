@@ -27,7 +27,7 @@ public class Pneumatics implements PneumaticsLoop {
         //Update regulator to change system pressure
         if(wantPressureChange) {
             //Adjust regulator
-            
+
             if(Utils.epsilonEquals(pressure, goal, 5.0)){
                 wantPressureChange = false;
             }

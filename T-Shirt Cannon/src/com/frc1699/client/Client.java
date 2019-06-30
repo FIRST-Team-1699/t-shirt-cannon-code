@@ -11,7 +11,7 @@ public class Client  implements Runnable{
     
     private Client instance;
     
-    public Client getInstance(){
+    public static Client getInstance(){
         if(instance == null){
             instance = new Client();
         }
@@ -99,7 +99,12 @@ public class Client  implements Runnable{
             }
         }
     }   
-    
+
+    public void addMessage(final String message){
+        //Add Message to queue so it can be sent to the server
+        writeQueue.add(message);
+    }
+
     public synchronized void start(){
         if(running)return;
         running = true;
